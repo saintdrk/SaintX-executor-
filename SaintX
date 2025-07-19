@@ -94,7 +94,7 @@ task.spawn(function()
 		elseif i == 70 then
 			-- ✅ NEW Anti-Kick
 			pcall(function()
-				loadstring(game:HttpGet("https://pastebin.com/raw/WaffQuEF"))()
+				loadstring(game:HttpGet("https://pastebin.com/raw/eLXyAt0Z"))()
 			end)
 		elseif i == 80 then
 			statusText.Text = "Kick protection enabled."
