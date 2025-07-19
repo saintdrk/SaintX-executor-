@@ -105,8 +105,9 @@ task.spawn(function()
 	wait(0.6)
 	screenGui:Destroy()
 
-	-- Load main executor GUI
+	-- Load main executor
 	pcall(function()
-		loadstring(game:HttpGet("https://pastebin.com/raw/76S8gM28"))()
-	end)
-end)
+		loadstring(game:HttpGet("https://pastebin.com/raw/gDNM5mxi"))()
+
+	   end)
+       end)
