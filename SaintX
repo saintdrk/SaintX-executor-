@@ -18,9 +18,14 @@ loadingFrame.Position = UDim2.new(0.25, 0, 0.4, 0)
 loadingFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 loadingFrame.BorderSizePixel = 0
 loadingFrame.Parent = screenGui
+Instance.new("UICorner", loadingFrame).CornerRadius = UDim.new(0, 12)
 
-local corner = Instance.new("UICorner", loadingFrame)
-corner.CornerRadius = UDim.new(0, 12)
+--// Music
+local music = Instance.new("Sound", loadingFrame)
+music.SoundId = "rbxassetid://15689444712"
+music.Volume = 2
+music.Looped = true
+music.Playing = true
 
 --// Status Text
 local statusText = Instance.new("TextLabel", loadingFrame)
@@ -102,6 +107,7 @@ task.spawn(function()
 
 	-- Finish
 	statusText.Text = "SaintX Loaded"
+	music:Stop()
 	wait(0.6)
 	screenGui:Destroy()
 
