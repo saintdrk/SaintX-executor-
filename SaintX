@@ -113,7 +113,7 @@ task.spawn(function()
 
 	-- Load main executor
 	pcall(function()
-		loadstring(game:HttpGet("https://pastebin.com/raw/gDNM5mxi"))()
+		loadstring(game:HttpGet("https://pastebin.com/raw/L2XDXt11"))()
 
 	   end)
        end)
