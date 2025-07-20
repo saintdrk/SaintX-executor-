@@ -22,7 +22,7 @@ Instance.new("UICorner", loadingFrame).CornerRadius = UDim.new(0, 12)
 
 --// Music
 local music = Instance.new("Sound", loadingFrame)
-music.SoundId = "rbxassetid://1848354536"
+music.SoundId = "rbxassetid://1841647093"
 music.Volume = 2
 music.Looped = true
 music.Playing = true
